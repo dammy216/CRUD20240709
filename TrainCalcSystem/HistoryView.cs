@@ -13,7 +13,8 @@ namespace TrainCalcSystem
 {
     public partial class HistoryView : Form
     {
-        private HistoryManager _instance = HistoryManager.Instance;
+        private HistoryManager _historyInstance = HistoryManager.Instance;
+        private SalesManager _salesInstance = SalesManager.Instance;
         public HistoryView()
         {
             InitializeComponent();
@@ -22,9 +23,9 @@ namespace TrainCalcSystem
         private void UpdateGridView()
         {
             historyGV.Rows.Clear();
-            foreach(var history in _instance.HistoryList)
+            foreach(var history in _historyInstance.HistoryList)
             {
-                int rowIndex = historyGV.Rows.Add(_instance.GetHitoryItems(history));
+                int rowIndex = historyGV.Rows.Add(_historyInstance.GetHitoryItems(history));
                 historyGV.Rows[rowIndex].Tag = history;
             }
         }
@@ -34,15 +35,28 @@ namespace TrainCalcSystem
             var add = new AddView();
             if(add.ShowDialog() == DialogResult.OK)
             {
-                _instance.AddHistory();
+                _historyInstance.AddHistory();
                 UpdateGridView();
             }
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            _instance.RemoveHistory(historyGV.SelectedRows[0].Tag as History);
+            _historyInstance.RemoveHistory(historyGV.SelectedRows[0].Tag as History);
             UpdateGridView();
+        }
+
+        private void buyBtn_Click(object sender, EventArgs e)
+        {
+            _salesInstance.AddSales(historyGV.SelectedRows[0].Tag as History);
+            _historyInstance.RemoveHistory(historyGV.SelectedRows[0].Tag as History);
+            UpdateGridView();
+        }
+
+        private void toBuyHistoryBtn_Click(object sender, EventArgs e)
+        {
+            var sales = new SalesHistoryView();
+            sales.ShowDialog();
         }
     }
 }

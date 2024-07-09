@@ -34,6 +34,8 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
+            this.buyBtn = new System.Windows.Forms.Button();
+            this.toBuyHistoryBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.historyGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,11 +93,33 @@
             this.deleteBtn.UseVisualStyleBackColor = true;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
+            // buyBtn
+            // 
+            this.buyBtn.Location = new System.Drawing.Point(617, 159);
+            this.buyBtn.Name = "buyBtn";
+            this.buyBtn.Size = new System.Drawing.Size(75, 23);
+            this.buyBtn.TabIndex = 3;
+            this.buyBtn.Text = "購入";
+            this.buyBtn.UseVisualStyleBackColor = true;
+            this.buyBtn.Click += new System.EventHandler(this.buyBtn_Click);
+            // 
+            // toBuyHistoryBtn
+            // 
+            this.toBuyHistoryBtn.Location = new System.Drawing.Point(617, 233);
+            this.toBuyHistoryBtn.Name = "toBuyHistoryBtn";
+            this.toBuyHistoryBtn.Size = new System.Drawing.Size(75, 23);
+            this.toBuyHistoryBtn.TabIndex = 4;
+            this.toBuyHistoryBtn.Text = "購入履歴";
+            this.toBuyHistoryBtn.UseVisualStyleBackColor = true;
+            this.toBuyHistoryBtn.Click += new System.EventHandler(this.toBuyHistoryBtn_Click);
+            // 
             // HistoryView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.toBuyHistoryBtn);
+            this.Controls.Add(this.buyBtn);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.historyGV);
@@ -114,6 +138,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Button buyBtn;
+        private System.Windows.Forms.Button toBuyHistoryBtn;
     }
 }
 
